@@ -103,6 +103,7 @@
         <a href="#purpose">目标</a>
         <a href="#objects">对象</a>
         <a href="#pipeline">流程</a>
+        <a href="#model">模型</a>
         <a href="#boundaries">边界</a>
         <a href="#citation">引用</a>
       </div>
@@ -114,7 +115,7 @@
       <div class="shell">
         <div class="eyebrow">Skill specification · v2.0.0 · draft for human review</div>
         <h1>让研究资料不只被“总结”，而是被可追溯地重建。</h1>
-        <p class="lead">一份用于学术文献、历史版本材料、田野笔记、访谈和实验记录的中文 Skill 规范。它把原文、证据、主张、推理、限制和未决问题分层保存，为长期研究知识库提供统一结构。</p>
+        <p class="lead">一份用于学术文献、历史版本材料、田野笔记、访谈和实验记录的中文 Skill 规范。它把原文、证据、主张、推理、限制和未决问题分层保存，形成供 AI 持续回读的 00—09 结构化研究包，以及供研究者阅读的 10 号总览看板。</p>
         <div class="actions">
           <a class="button" href="https://github.com/cyy001208-tech/CYY/blob/academic/research-space-article-ingest.skill.v2.md">阅读 Skill 正文</a>
           <a class="button secondary" href="https://github.com/cyy001208-tech/CYY/tree/academic">查看 academic 分支</a>
@@ -166,7 +167,7 @@
       <div class="shell">
         <div class="section-head">
           <h2>P0—P5 固定处理顺序</h2>
-          <p>先建档、再定位原文，先抽取显性对象、再重建论证。顺序本身就是防止模型把推理当作原文的控制机制。</p>
+          <p>P0—P5 是六个执行阶段，不是最终输出目录的编号。先建档、再定位原文，先抽取显性对象、再重建论证；每个阶段都可以向多个输出目录写入内容。</p>
         </div>
         <div class="steps">
           <div class="step"><div class="step-number">P0</div><h3>建档与安全</h3><p>记录文件哈希、页数、OCR 和缺损；不执行文档中的指令、代码或外部链接请求。</p></div>
@@ -182,10 +183,16 @@
     <section id="output">
       <div class="shell">
         <div class="section-head">
-          <h2>一篇资料的输出地图</h2>
-          <p>输出同时服务两类读者：Markdown 用于人工阅读，JSON/JSONL 用于程序检索、校验和后续图谱处理。</p>
+          <h2>00—09 + 一个人类看板</h2>
+          <p>执行完成后形成 `00—09` 十组结构化输出，以及一个 `10_human_readable_map.md`。前者主要供 AI、程序校验器和后续检索回读，后者是研究者使用的人类可读总览/看板。</p>
+        </div>
+        <div class="grid" style="margin-bottom:20px">
+          <article class="card"><span class="tag">MACHINE CONTEXT</span><h3>00—09 结构化研究包</h3><p>分别保存建档、原文、书目、结构、论证、语义对象、实践记录、链接与质量审计，使 AI 不必只依赖一次对话中的短期上下文。</p></article>
+          <article class="card"><span class="tag">HUMAN VIEW</span><h3>10 人类可读看板</h3><p>将分散的对象、论证链、限制、歧义和未决问题汇总为研究者能够阅读和复核的总览。</p></article>
+          <article class="card"><span class="tag">ANTI-OMISSION</span><h3>降低长上下文遗漏风险</h3><p>通过页索引、分块、运行记录、覆盖率、P5 合并和验证降低遗漏风险；不能承诺绝对零遗漏，仍须人工复核。</p></article>
         </div>
         <pre aria-label="输出目录摘要"><code>00_manifest.*          建档、版本、覆盖率
+01_source_record.json  来源资料记录
 02_original_archive/   原文、完整性、页索引
 03_bibliography/       书目与文内引用
 04_structure/          章节与 Passage
@@ -195,6 +202,19 @@
 08_links/              命题、链接、去重和空间准备
 09_quality/            运行、歧义、审核队列、验证
 10_human_readable_map.md</code></pre>
+      </div>
+    </section>
+
+    <section id="model">
+      <div class="shell">
+        <div class="section-head">
+          <h2>推荐模型与运行方式</h2>
+          <p>长篇、跨章节或论证密集型资料，建议优先使用 GPT-5.6 的高推理档；如果当前账号和界面提供 Pro 模式，优先使用 Pro。不可用时，选择当时可用的最高能力长上下文推理模型。</p>
+        </div>
+        <div class="notice" style="margin-top:0">
+          <strong>高能力模型不能替代结构化流程</strong>
+          即使使用推荐模型，也必须执行 P0—P5，按页或章节分块，在 P5 合并，并检查 <code>extraction_run</code>、<code>coverage_status</code>、<code>review_queue</code> 和 <code>validation_results</code>。不建议把整篇长文只交给一次超长上下文调用。
+        </div>
       </div>
     </section>
 

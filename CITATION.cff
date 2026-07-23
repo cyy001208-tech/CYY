@@ -8,7 +8,7 @@ authors:
   - name: "CYY"
 abstract: "一份面向学术文献、历史版本材料、田野笔记和实验记录的可追溯研究资料解析与论证重建规范。"
 repository-code: "https://github.com/cyy001208-tech/CYY"
-url: "https://github.com/cyy001208-tech/CYY/tree/academic"
+url: "https://cyy001208-tech.github.io/CYY/"
 keywords:
   - research data
   - argument reconstruction
