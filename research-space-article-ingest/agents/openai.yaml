@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Space Article Ingest"
+  short_description: "Turn research sources into traceable evidence"
+  default_prompt: "Use $research-space-article-ingest to ingest this source into a traceable research package."

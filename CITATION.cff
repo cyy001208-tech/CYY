@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this research specification, please cite it using the metadata below."
-title: "研究空间文章解析与论证重建 Skill"
+title: "Research Space Article Ingest and Argument Reconstruction Skill"
 type: software
 version: 2.0.0
 date-released: 2026-07-23
 authors:
   - name: "CYY"
-abstract: "一份面向学术文献、历史版本材料、田野笔记和实验记录的可追溯研究资料解析与论证重建规范。"
+abstract: "A traceable specification for ingesting scholarly sources, historical editions, field notes, interviews, and experiment records while preserving evidence, claims, reasoning, provenance, uncertainty, and human-review state."
 repository-code: "https://github.com/cyy001208-tech/CYY"
 url: "https://cyy001208-tech.github.io/CYY/"
 keywords:
